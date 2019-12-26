@@ -68,4 +68,19 @@ export class SpeechBlocker {
 	setVolume(newVolume) {
 		this.gain.gain.value = newVolume;
 	}
+
+	/**
+	 * Mute ouput by disconnecting nodes from the destination
+	 */
+	mute() {
+		this.gain.disconnect(this.ctx.destination)
+	}
+
+
+	/**
+	 * Unmute ouput by connecting nodes from the destination
+	 */
+	unmute() {
+		this.gain.connect(this.ctx.destination)
+	}
 }
